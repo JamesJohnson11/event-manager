@@ -26,3 +26,16 @@ exports.fetchEvents = function (req, res) {
         }
     })
 }
+
+exports.fetchSingleEvent = function (req, res) {
+    let id = req.params.id;
+    Event.findById(id, (err, event) => {
+        if (err) {
+            return res.status(500).json({message: err});
+        } else if (!event) {
+            return res.status(404).json({message: "Event not found"});
+        } else {
+            return res.status(200).json({event});
+        }
+    })
+}
