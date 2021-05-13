@@ -11,4 +11,7 @@ router.get('/events', evCtrl.fetchEvents);
 // GET request to /events/:id to fetch a single event
 router.get('/events/:id', evCtrl.fetchSingleEvent);
 
+// PUT request to /events/:id to update a single event
+router.put('/events/:id', evCtrl.updateSingleEvent);
+
 module.exports = router;
