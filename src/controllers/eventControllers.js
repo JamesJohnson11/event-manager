@@ -54,7 +54,13 @@ exports.updateSingleEvent = function (req, res) {
         } else if (!event) {
             return res.status(404).json({message: 'Event not found'});
         } else {
-            return res.status(200).json({message: 'Event successfully updated!', event});
+            event.save((err, savedEvent) => {
+                if (err) {
+                    return res.status(400).json({message: err});
+                } else {
+                    return res.status(200).json({message: 'Event successfully updated!', event});
+                }
+            });
         }
     })
 }
