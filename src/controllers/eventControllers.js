@@ -34,8 +34,7 @@ exports.fetchEvents = function (req, res) {
 
 // Fetch single event
 exports.fetchSingleEvent = function (req, res) {
-    let id = req.params.id;
-    Event.findById(id, (err, event) => {
+    Event.findById(req.params.id, (err, event) => {
         if (err) {
             return res.status(500).json({message: err});
         } else if (!event) {
