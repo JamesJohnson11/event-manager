@@ -59,3 +59,17 @@ exports.updateSingleEvent = function (req, res) {
         }
     })
 }
+
+
+// Delete single event
+exports.deleteSingleEvent = function (req, res) {
+    Event.findByIdAndDelete(req.params.id, (err, event) => {
+        if (err) {
+            return res.status(500).json({message: err});
+        } else if (!event) {
+            return res.status(404).json({message: 'Event not found'});
+        } else {
+            return res.status(200).json({message: 'Event successfully deleted!', event});
+        }
+    })
+}

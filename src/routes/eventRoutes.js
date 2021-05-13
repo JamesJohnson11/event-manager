@@ -14,4 +14,7 @@ router.get('/events/:id', evCtrl.fetchSingleEvent);
 // PUT request to /events/:id to update a single event
 router.put('/events/:id', evCtrl.updateSingleEvent);
 
+// DELETE request to /events/:id to delete a single event
+router.delete('/events/:id', evCtrl.deleteSingleEvent);
+
 module.exports = router;
