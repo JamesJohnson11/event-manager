@@ -1,14 +1,22 @@
 const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
-    title: String,
+    title: {
+        type: String,
+        required: true
+    },
     cost: {
         type: Number,
-        min: 1
+        required: true,
+        min: [0.01, 'Cost must be greater than 0, currently you have {VALUE} as the cost']
     },
     category: {
         type: String,
-        enum: ['business', 'casual', 'party', 'general']
+        required: true,
+        enum: {
+            values: ['business', 'casual', 'party', 'general'],
+            message: '{VALUE} is not supported as a category value'
+        }
     }
 })
 
