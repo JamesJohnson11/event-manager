@@ -1,0 +1,23 @@
+{
+  "name": "event-manager",
+  "version": "1.0.0",
+  "description": "Event management app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JamesJohnson11/event-manager.git"
+  },
+  "author": "Barry Johnson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JamesJohnson11/event-manager/issues"
+  },
+  "homepage": "https://github.com/JamesJohnson11/event-manager#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.7"
+  }
+}
