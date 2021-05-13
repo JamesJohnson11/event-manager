@@ -1,6 +1,7 @@
 const Event = require('../models/event');
 
 
+// Create new event
 exports.createNewEvent = function (req, res) {
     Event.create({
         ...req.body
@@ -13,6 +14,8 @@ exports.createNewEvent = function (req, res) {
     })
 }
 
+
+// Fetch all events
 exports.fetchEvents = function (req, res) {
     let conditions = {};
     if (req.query.category) {
@@ -27,6 +30,8 @@ exports.fetchEvents = function (req, res) {
     })
 }
 
+
+// Fetch single event
 exports.fetchSingleEvent = function (req, res) {
     let id = req.params.id;
     Event.findById(id, (err, event) => {
@@ -39,3 +44,6 @@ exports.fetchSingleEvent = function (req, res) {
         }
     })
 }
+
+
+// Update single event
