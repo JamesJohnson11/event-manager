@@ -1,17 +1,18 @@
 const mongoose = require('mongoose');
-const connectionString = 'mongodb://localhost:27017/event-manager';
+const connectionString = `mongodb+srv://JamesJohnson11:OneWing11@genesis.sgqmj.mongodb.net/Events?retryWrites=true&w=majority`;
+const connectionParams = {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useUnifiedTopology: true 
+}
 
 
 module.exports = function () {
-    mongoose.connect(connectionString, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-        useFindAndModify: false
-    }, (err) => {
-        if (err) {
-            console.log(err);
-        } else {
-            console.log('Database connection successful!');
-        }
-    })
-}
+    mongoose.connect(connectionString, connectionParams)
+        .then( () => {
+            console.log('Connected to database ')
+        })
+        .catch( (err) => {
+            console.error(`Error connecting to the database. \n${err}`);
+        })
+    }
