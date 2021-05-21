@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const dbSetup = require('./database/dbSetup');
 const eventRoutes = require('./routes/eventRoutes');
+require('dotenv').config();
 
 app.use(express.json());
 
