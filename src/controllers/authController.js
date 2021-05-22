@@ -72,7 +72,7 @@ exports.loginUser = (req, res) => {
             if (err) {
                 return res.status(500).json({ err });
             }
-            return res.status(200).json({ message: `${username} logged in successfully!`, token });
+            return res.status(200).json({ message: `${foundUser.username} logged in successfully!`, token });
         })
     })
 }
