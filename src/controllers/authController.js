@@ -49,3 +49,30 @@ exports.registerNewUser = (req, res) => {
         })
     })
 }
+
+
+exports.loginUser = (req, res) => {
+    User.findOne({ username: req.body.username }, (err, foundUser) => {
+        if (err) {
+            return res.status(500).json({ err });
+        }
+        if (!foundUser) {
+            return res.status(401).json({ message: 'Incorrect username' });
+        }
+        let match = bcrypt.compareSync(req.body.password, foundUser.password);
+
+        if (!match) {
+            return res.status(401).json({ message: 'Incorrect password' });
+        }
+
+        jwt.sign({
+            id: foundUser._id,
+            username: foundUser.username
+        }, secret, {expiresIn: expiry}, (err, token) => {
+            if (err) {
+                return res.status(500).json({ err });
+            }
+            return res.status(200).json({ message: `${username} logged in successfully!`, token });
+        })
+    })
+}
