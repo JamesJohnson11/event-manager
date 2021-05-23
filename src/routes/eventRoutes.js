@@ -4,7 +4,7 @@ const evCtrl = require('../controllers/eventControllers');
 const { authenticateUser, checkIfAdmin } = require('../middlewares/authentication');
 
 // POST request to /events to create new event
-router.post('/events', authenticateUser, checkIfAdmin, evCtrl.createNewEvent);
+router.post('/events', authenticateUser, evCtrl.createNewEvent);
 
 // GET request to /events to fetch all events
 router.get('/events', authenticateUser, evCtrl.fetchEvents);
