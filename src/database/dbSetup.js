@@ -3,7 +3,8 @@ const connectionString = `mongodb+srv://JamesJohnson11:OneWing11@genesis.sgqmj.m
 const connectionParams = {
     useNewUrlParser: true,
     useCreateIndex: true,
-    useUnifiedTopology: true 
+    useUnifiedTopology: true,
+    useFindAndModify: false,
 }
 
 
