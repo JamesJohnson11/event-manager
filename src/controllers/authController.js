@@ -36,7 +36,8 @@ exports.registerNewUser = (req, res) => {
 
                         jwt.sign({
                             id: newUser._id,
-                            email: newUser.email
+                            email: newUser.email,
+                            role: newUser.role
                         }, secret, {expiresIn: expiry}, (err, token) => {
                             if (err) {
                                 return res.status(500).json({ err });
@@ -67,7 +68,8 @@ exports.loginUser = (req, res) => {
 
         jwt.sign({
             id: foundUser._id,
-            email: foundUser.email
+            email: foundUser.email,
+            role: foundUser.role
         }, secret, {expiresIn: expiry}, (err, token) => {
             if (err) {
                 return res.status(500).json({ err });
