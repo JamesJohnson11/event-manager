@@ -17,6 +17,9 @@ const eventSchema = new mongoose.Schema({
             values: ['business', 'casual', 'party', 'general'],
             message: '{VALUE} is not supported as a category value'
         }
+    },
+    image: {
+        type: String
     }
 })
 

@@ -1,18 +1,33 @@
 const { findOneAndUpdate } = require('../models/event');
 const Event = require('../models/event');
+const axios = require('axios');
+const { response } = require('express');
 
 
 // Create new event
 exports.createNewEvent = function (req, res) {
-    Event.create({
-        ...req.body
-    }, (err, newEvent) => {
-        if (err) {
-            return res.status(500).json({message: err});
-        } else {
-            return res.status(200).json({message: 'New event created!', newEvent});
-        }
-    })
+    let query = req.body.category;
+    let api = 'https://imagegen.herokuapp.com/?category=';
+    let callUrl = api + query;
+    axios.get(callUrl)
+  .then(response => {
+      req.body.image = response.data.image;
+      Event.create({
+          title: req.body.title,
+          cost: req.body.cost,
+          category: req.body.category,
+          image: req.body.image
+      }, (err, newEvent) => {
+          if (err) {
+              return res.status(500).json({message: err});
+          } else {
+              return res.status(200).json({message: 'New event created!', newEvent});
+          }
+      })
+  })
+   .catch(error => {
+       console.log(error);
+   });
 }
 
 
